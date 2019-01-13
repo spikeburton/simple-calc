@@ -1,0 +1,93 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+#container {
+  width: 300px;
+  height: 350px;
+  border: 1px solid dimgray;
+  border-radius: 5px;
+  background-color: lightgray;
+  margin: 40px auto;
+  padding: 2px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 2px;
+}
+
+.num, .op, #display, #clear, #dec, #equals {
+  border: 1px solid #000;
+  border-radius: 5px;
+  line-height: 45px;
+}
+
+.num, #clear, #dec, #equals {
+  background-color: #eee;
+}
+
+.op {
+  background-color: darkorange
+}
+
+#display {
+  background-color: rgba(95, 95, 85, 0.7);
+  text-align: right;
+  padding-right: 10px;
+  font-size: 1.75em;
+  grid-area: 1 / 1 / span 1 / span 4;
+}
+
+#num_1 {
+  grid-area: 4 / 1;
+}
+
+#num_2 {
+  grid-area: 4 / 2;
+}
+
+#num_3 {
+  grid-area: 4 / 3;
+}
+
+#num_4 {
+  grid-area: 3 / 1;
+}
+
+#num_5 {
+  grid-area: 3 / 2;
+}
+
+#num_6 {
+  grid-area: 3 / 3;
+}
+
+#num_7 {
+  grid-area: 2 / 1;
+}
+
+#num_8 {
+  grid-area: 2 / 2;
+}
+
+#num_9 {
+  grid-area: 2 / 3;
+}
+
+#num_0 {
+  grid-area: 5 / 2;
+}
+
+#clear {
+  grid-area: 5 / 1;
+}
+
+#dec {
+  grid-area: 5 / 3;
+}
+
+#equals {
+  grid-area: 6 / 1 / span 1 / span 4;
+}
