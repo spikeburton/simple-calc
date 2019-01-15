@@ -16,31 +16,36 @@ let num1, num2, op = null;
 CALC.addEventListener("click", e => {
   // what to do if a numeric key is pressed?
   if(e.target.className === "num") {
+    // if no numbers have yet been entered
     if(!num1) {
-      // if no numbers have yet been entered, eliminate any leading 0's
-      
         num1 = e.target.textContent;
-        DISPLAY.textContent = num1;
-      
-    // append digits to the end of the first number, not exceeding 10 digits
+        DISPLAY.textContent = num1;  
     } else if(num1 && !op) {
+    // append digits to the end of the first number, not exceeding 10 digits
       if(num1.length < 10) {
-        if(num1 === "0" && e.target.textContent != "0") {
+        // eliminate the possibility of any leading 0's
+        if(num1 === "0") {
+          num1 = e.target.textContent;
+        } else {
           num1 += e.target.textContent;
-          DISPLAY.textContent = num1;
         }
+        DISPLAY.textContent = num1;
       } else {
         window.alert("Don't make a number too big now!")
       }
     // After a first number and operator have been entered, check for the second number
     } else if(num1 && op && !num2) {
-      if(e.target.textContent != "0") {
+      //if(e.target.textContent != "0") {
         num2 = e.target.textContent;
         DISPLAY.textContent = num2;
-      }
+      //}
     } else if(num1 && op && num2) {
       if(num2.length < 10) {
-        num2 += e.target.textContent;
+        if(num2 === "0") {
+          num2 = e.target.textContent;
+        } else {
+          num2 += e.target.textContent;
+        }
         DISPLAY.textContent = num2;
       } else {
         window.alert("Don't make a number too big now!")
@@ -54,8 +59,7 @@ CALC.addEventListener("click", e => {
     }
   // what to do if the AC button is pressed?
   } else if(e.target.id === "clear") {
-    num1 = num2 = op = null;
-    DISPLAY.textContent = 0;
+    clear();
   // what to do if the decimal . is pressed?
   // make sure there can only be one decimal place in a number and other conditions met
   } else if(e.target.id === "dec") {
@@ -78,6 +82,11 @@ CALC.addEventListener("click", e => {
     }
   }
 });
+
+function clear() {
+  num1 = num2 = op = null;
+  DISPLAY.textContent = "~";
+}
 
 // Definte here the function that is called when the "=" button is pressed
 function calculate() {
