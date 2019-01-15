@@ -101,6 +101,12 @@ function calculate() {
   // calculate the result based upon which operator is chosen
   switch(op) {
     case "/":
+      // do not allow 'divide by 0' errors
+      if(num2 === "0") {
+        window.alert("Invalid operation!");
+        clear();
+        return null;
+      }
       result = parseFloat(num1) / parseFloat(num2);
       break;
     case "*":
@@ -120,5 +126,6 @@ function calculate() {
   
   // finally, display the result in the readout and reset everything to initial state
   DISPLAY.textContent = result;
-  num1 = num2 = op = null;
+  num1 = result;
+  num2 = op = null;
 }
