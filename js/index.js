@@ -18,15 +18,17 @@ CALC.addEventListener("click", e => {
   if(e.target.className === "num") {
     if(!num1) {
       // if no numbers have yet been entered, eliminate any leading 0's
-      if(e.target.textContent != "0") {
+      
         num1 = e.target.textContent;
         DISPLAY.textContent = num1;
-      }
+      
     // append digits to the end of the first number, not exceeding 10 digits
     } else if(num1 && !op) {
       if(num1.length < 10) {
-        num1 += e.target.textContent;
-        DISPLAY.textContent = num1;
+        if(num1 === "0" && e.target.textContent != "0") {
+          num1 += e.target.textContent;
+          DISPLAY.textContent = num1;
+        }
       } else {
         window.alert("Don't make a number too big now!")
       }
