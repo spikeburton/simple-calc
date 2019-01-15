@@ -1,8 +1,12 @@
+/* Universal styling */
+
 body {
   margin: 0 auto;
   padding: 0;
   text-align: center;
 }
+
+/* Define basic styling for the container div and set its display to GRID */
 
 #container {
   width: 300px;
@@ -41,6 +45,8 @@ body {
   background-color: #FF8800;
 }
 
+/* Styling for the readout display */
+
 #display {
   background-color: rgba(95, 95, 85, 0.7);
   box-shadow: 1px 1px gray;
@@ -51,6 +57,10 @@ body {
   grid-area: 1 / 1 / span 1 / span 4;
   overflow: hidden;
 }
+
+/* GRID AREAS */
+
+/* Set the grid area for the numeric keys */
 
 #num_1 {
   grid-area: 4 / 1;
@@ -91,6 +101,26 @@ body {
 #num_0 {
   grid-area: 5 / 2;
 }
+
+/* Set the grid area for the operators */
+
+#divide {
+  grid-area: 2 / 4;
+}
+
+#mult {
+  grid-area: 3 / 4;
+}
+
+#subt {
+  grid-area: 4 / 4;
+}
+
+#add {
+  grid-area: 5 / 4;
+}
+
+/* Set grid area for decimal, clear button, and equals */
 
 #clear {
   grid-area: 5 / 1;
