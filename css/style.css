@@ -43,10 +43,13 @@ body {
 
 #display {
   background-color: rgba(95, 95, 85, 0.7);
+  box-shadow: 1px 1px gray;
   text-align: right;
+  padding-left: 10px;
   padding-right: 10px;
   font-size: 1.75em;
   grid-area: 1 / 1 / span 1 / span 4;
+  overflow: hidden;
 }
 
 #num_1 {
