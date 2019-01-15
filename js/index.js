@@ -5,8 +5,10 @@ let num1, num2, op = null;
 CALC.addEventListener("click", e => {
   if(e.target.className === "num") {
     if(!num1) {
-      num1 = e.target.textContent;
-      DISPLAY.textContent = num1;
+      if(e.target.textContent != "0") {
+        num1 = e.target.textContent;
+        DISPLAY.textContent = num1;
+      }
     } else if(num1 && !op) {
       if(num1.length < 10) {
         num1 += e.target.textContent;
@@ -15,8 +17,10 @@ CALC.addEventListener("click", e => {
         window.alert("Don't make a number too big now!")
       }
     } else if(num1 && op && !num2) {
-      num2 = e.target.textContent;
-      DISPLAY.textContent = num2;
+      if(e.target.textContent != "0") {
+        num2 = e.target.textContent;
+        DISPLAY.textContent = num2;
+      }
     } else if(num1 && op && num2) {
       if(num2.length < 10) {
         num2 += e.target.textContent;
@@ -34,7 +38,23 @@ CALC.addEventListener("click", e => {
     num1 = num2 = op = null;
     DISPLAY.textContent = 0;
   } else if(e.target.id === "dec") {
-    window.alert("Decimal!");
+    if(!num1) {
+      num1 = "0."
+      DISPLAY.textContent = num1;
+    } else if(num1 && !op) {
+      if(!num1.includes(".")) {
+        num1 += ".";
+        DISPLAY.textContent = num1;
+      }
+    } else if(num1 && op && !num2) {
+      num2 = "0.";
+      DISPLAY.textContent = num2;
+    } else if(num1 && op && num2) {
+      if(!num2.includes(".")) {
+        num2 += ".";
+        DISPLAY.textContent = num2;
+      }
+    }
   }
 });
 
@@ -65,5 +85,5 @@ function calculate() {
   }
   
   DISPLAY.textContent = result;
-  num1, num2, op = null;
+  num1 = num2 = op = null;
 }
