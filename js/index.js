@@ -23,7 +23,10 @@ CALC.addEventListener("click", e => {
     } else if(num1 && !op) {
     // append digits to the end of the first number, not exceeding 10 digits
       if(num1.length < 10) {
-        // eliminate the possibility of any leading 0's
+        /* eliminate the possibility of any leading 0's
+         * note that this handles the case for when the input is 0
+         * OR any other number
+         */
         if(num1 === "0") {
           num1 = e.target.textContent;
         } else {
@@ -35,10 +38,8 @@ CALC.addEventListener("click", e => {
       }
     // After a first number and operator have been entered, check for the second number
     } else if(num1 && op && !num2) {
-      //if(e.target.textContent != "0") {
         num2 = e.target.textContent;
         DISPLAY.textContent = num2;
-      //}
     } else if(num1 && op && num2) {
       if(num2.length < 10) {
         if(num2 === "0") {
@@ -60,6 +61,7 @@ CALC.addEventListener("click", e => {
   // what to do if the AC button is pressed?
   } else if(e.target.id === "clear") {
     clear();
+    DISPLAY.textContent = "~";
   // what to do if the decimal . is pressed?
   // make sure there can only be one decimal place in a number and other conditions met
   } else if(e.target.id === "dec") {
@@ -85,14 +87,12 @@ CALC.addEventListener("click", e => {
 
 function clear() {
   num1 = num2 = op = null;
-  DISPLAY.textContent = "~";
 }
 
 // Definte here the function that is called when the "=" button is pressed
 function calculate() {
   // if the requirements to calculate are not met - try again
   if(!(num1 && num2 && op)) {
-    window.alert("Invalid operation!");
     return null;
   }
   
@@ -103,7 +103,7 @@ function calculate() {
     case "/":
       // do not allow 'divide by 0' errors
       if(num2 === "0") {
-        window.alert("Invalid operation!");
+        DISPLAY.textContent = "error: div by 0";
         clear();
         return null;
       }
@@ -120,12 +120,12 @@ function calculate() {
       break;
     default:
       window.alert("OOPS! Something went wrong.");
-      result = "ERROR";
+      result = "error";
       break;
   }
   
   // finally, display the result in the readout and reset everything to initial state
   DISPLAY.textContent = result;
-  num1 = result;
+  num1 = "" + result; // convert back to a string
   num2 = op = null;
 }
