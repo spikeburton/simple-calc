@@ -1,5 +1,5 @@
 /**
- * @name Simple Calc
+ * @name Simple-Calc
  * @description A simple little calculator app
  * @author Spike Burton
  */
@@ -10,7 +10,7 @@ const DISPLAY = document.getElementById("display");
 
 // Declare and initialize some global variables representing the two numbers
 // to be operated upon as well as a string representing the operator itself: / * - +
-let num1, num2, op = null;
+let num1 = null, num2 = null, op = null;
 
 // listen for which button is clicked in the interface
 CALC.addEventListener("click", e => {
